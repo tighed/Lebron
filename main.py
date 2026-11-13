@@ -25,6 +25,7 @@ class State:
     player_name: str
     lebron: Lebron
 
+
 set_website_title("Lebron Quiz")
 set_site_information(
     author="Tighe Duffy",
@@ -78,10 +79,13 @@ def stats_page(state: State) -> Page:
         total = total + game.points
     state.lebron.points = total
     return Page(state, [
-        Header(state.lebron.full_name + str(state.lebron.points), 1),
+        Header(state.lebron.full_name + " - " + str(state.lebron.points) + " Points", 1),
         Button("Home", "index"),
     ])
 
-
-
-start_server(State(0, [Game("Boston Celtics", 27, True)], "Fan", Lebron("LeBron James", 27.0, False)))
+start_server(State(
+    0,
+    [Game("Boston Celtics", 27, True)],
+    "Fan",
+    Lebron(27, "LeBron James", False)
+))
